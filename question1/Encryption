@@ -1,0 +1,108 @@
+import re;
+
+
+def encryption(text):
+
+        shift1=int(input("enter shift1: "));
+        shift2=int(input("enter shift2: "));
+
+        encrypted_file = " ";
+        decrypted_file=" ";
+
+        for i in text:
+           for j in i:
+                if(j.islower()):
+                            j_1= ord(j);
+                            j_2 = ord(j);
+
+
+
+
+                            if (re.compile('[a-m]')):
+                               
+                               j_1=j_1+(shift1*shift2);
+                               j_1=chr(j_1);
+
+
+                               j_2=j_2-(shift1*shift2);
+                               j_2=chr(j_2);
+
+                            elif (re.compile('[n-z]')):
+                              j_1=j_1-(shift1+shift2);
+                              j_1=chr(j_1);
+
+                              j_2 = ord(j);
+                              j_2 = j_2 + (shift1 +shift2);
+                              j_2= chr(j_2);
+
+                elif(j.isupper()):
+                            j_1=ord(j);
+                            j_2 = ord(j);
+                            if (re.compile('[A-M]')):
+                                j_1=j_1-shift1;
+                                j_1=chr(j_1);
+
+
+                                j_2 = j_2 + shift1;
+                                j_2 = chr(j_2);
+
+                            elif (re.compile('[N-Z]')):
+                                j_1=j_1+(shift2*shift2);
+                                j_1=chr(j_1);
+
+
+                                j_2 = j_2 -(shift2*shift2);
+                                j_2 = chr(j_2);
+
+                else:
+                    j_1 = ord(j);
+                    j_1 = chr(j_1);
+
+                    j_2=ord(j);
+                    j_2=chr(j_2);
+
+                encrypted_file=encrypted_file+j_1;
+                print(encrypted_file);
+                decrypted_file=decrypted_file+j_2;
+                print(decrypted_file);
+
+        write_to_a_file(str(encrypted_file));
+        decryption(decrypted_file);
+
+def decryption(encrypted_file):
+    for i in encrypted_file:
+        for j in i:
+            print(j);
+
+
+
+
+def write_to_a_file(file):
+     write=open("encrypted_text.txt",'w');
+     write.write(file);
+     read_encrypted_file();
+
+
+
+def read_encrypted_file():
+     read_file=open("encrypted_text.txt",'r+');
+     for i in read_file:
+         print(i);
+
+
+
+
+
+def main():
+    text_file=open("raw_text.txt","r");
+
+    encryption(text_file);
+    text_file.close();
+
+
+main();
+
+
+
+
+
